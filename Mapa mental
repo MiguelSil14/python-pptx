@@ -1,0 +1,104 @@
+from pptx import Presentation
+from pptx.util import Inches, Pt
+
+# Crea la presentación
+prs = Presentation()
+
+# -- Slide 1: Portada --
+slide = prs.slides.add_slide(prs.slide_layouts[0])
+title = slide.shapes.title
+subtitle = slide.placeholders[1]
+title.text = "Sistema Endocrino y Sistema Nervioso"
+subtitle.text = "Neurotransmisores del SNC y Hormonas Suprarrenales"
+
+# -- Slide 2: Sistema Nervioso Central (SNC) --
+slide = prs.slides.add_slide(prs.slide_layouts[1])
+slide.shapes.title.text = "1. Sistema Nervioso Central (SNC)"
+body = slide.shapes.placeholders[1].text_frame
+body.text = "Componentes y neurotransmisores clave:"
+for bullet in [
+    "Neuronas presinápticas y postsinápticas",
+    "Sinapsis químicas y eléctricas",
+    "Acetilcolina (ACh): control motor, parasimpático",
+    "Glutamato: excitación y memoria",
+    "GABA: inhibición neuronal",
+    "Dopamina: recompensa y movimiento",
+    "Serotonina: estado de ánimo y sueño",
+    "Noradrenalina (SNC): atención y alerta"
+]:
+    p = body.add_paragraph()
+    p.text = bullet
+    p.level = 1
+
+# -- Slide 3: Eje Hipotálamo–Hipófisis–Suprarrenal (HHA) --
+slide = prs.slides.add_slide(prs.slide_layouts[1])
+slide.shapes.title.text = "2. Eje Hipotálamo–Hipófisis–Suprarrenal (HHA)"
+body = slide.shapes.placeholders[1].text_frame
+body.text = "Secuencia funcional:"
+for bullet in [
+    "Hipotálamo libera CRH",
+    "Hipófisis anterior secreta ACTH",
+    "Suprarrenal:",
+]:
+    p = body.add_paragraph()
+    p.text = bullet
+    p.level = 1
+p = body.add_paragraph()
+p.text = "Corteza: cortisol y aldosterona"
+p.level = 2
+p = body.add_paragraph()
+p.text = "Médula: adrenalina y noradrenalina"
+p.level = 2
+
+# -- Slide 4: Glándula Suprarrenal: Médula y Hormonas --
+slide = prs.slides.add_slide(prs.slide_layouts[5])
+slide.shapes.title.text = "3. Médula Suprarrenal y Hormonas"
+rows, cols = 3, 3
+left, top, width, height = Inches(0.5), Inches(1.5), Inches(9), Inches(2)
+table = slide.shapes.add_table(rows, cols, left, top, width, height).table
+
+# Encabezados
+table.cell(0, 0).text = "Hormona"
+table.cell(0, 1).text = "Origen"
+table.cell(0, 2).text = "Función principal"
+
+# Filas
+table.cell(1, 0).text = "Adrenalina"
+table.cell(1, 1).text = "Médula suprarrenal"
+table.cell(1, 2).text = "Aumenta FC, dilata bronquios, moviliza energía"
+
+table.cell(2, 0).text = "Noradrenalina"
+table.cell(2, 1).text = "Médula suprarrenal y SNC"
+table.cell(2, 2).text = "Vasoconstricción, alerta y presión arterial"
+
+# -- Slide 5: Interacción Neuroendocrina --
+slide = prs.slides.add_slide(prs.slide_layouts[1])
+slide.shapes.title.text = "4. Interacción Neuroendocrina"
+body = slide.shapes.placeholders[1].text_frame
+body.text = "Vías de comunicación:"
+for bullet in [
+    "Vía nerviosa: SNC → hipotálamo",
+    "Vía hormonal: CRH → ACTH → adrenalina/noradrenalina",
+    "Retroalimentación negativa del cortisol sobre CRH y ACTH"
+]:
+    p = body.add_paragraph()
+    p.text = bullet
+    p.level = 1
+
+# -- Slide 6: Funciones Fisiológicas Integradas --
+slide = prs.slides.add_slide(prs.slide_layouts[1])
+slide.shapes.title.text = "5. Funciones Fisiológicas Integradas"
+body = slide.shapes.placeholders[1].text_frame
+body.text = "Principales procesos:"
+for bullet in [
+    "Estrés agudo: adrenalina/noradrenalina y cortisol movilizan energía",
+    "Estado de ánimo y cognición: serotonina, dopamina, glutamato, GABA",
+    "Control autónomo: simpático (lucha/huida), parasimpático (reposo/digestión)"
+]:
+    p = body.add_paragraph()
+    p.text = bullet
+    p.level = 1
+
+# -- Slide 7: Receptores Adrenérgicos --
+slide = prs.slides.add_slide(prs.slide_layouts[5])
+slide.shapes.title.text = "6. Receptores Adren
